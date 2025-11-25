@@ -1,6 +1,6 @@
 function AdminDashboard() {
   return (
-    <div>Admin dashboard</div>
+    <div className="">Admin dashboard</div>
   )
 }
 
