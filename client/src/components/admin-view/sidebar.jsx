@@ -1,6 +1,7 @@
-import { Fragment } from "react";
-import { ChartNoAxesCombined,CircleCheckBig, Gauge, ShoppingCart } from "lucide-react";
+import { Fragment,useState } from "react";
+import { ChartNoAxesCombined,CircleCheckBig, Gauge,  ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Sheet,SheetContent, SheetHeader, SheetTitle } from "../ui/sheet";
 //import { adminSidebarMenuItems } from "@/config";
 
 
@@ -41,11 +42,28 @@ function MenuItem(){
 }
 
 
-function AdminSidebar() {
+function AdminSidebar({open,setOpen}) {
+
+  const [opensidebar,setOpenSidebar]=useState(false);
   
   const navigate= useNavigate();
   return (
    <Fragment>
+  
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetContent side="left" className="w-64">
+        <div className="flex flex-col h-full">
+          <MenuItem>
+          <SheetHeader className='border-b'>
+            <SheetTitle>
+              <ChartNoAxesCombined  size={30}/>
+            Admin Panel
+            </SheetTitle>
+          </SheetHeader>
+        </MenuItem>
+        </div>          
+      </SheetContent>
+    </Sheet>
     <aside className="hidden w-64 flex-col border-r bg-background p-6 lg:flex">
       <div onClick={()=>navigate('/admin/dashboard')}
        className="flex cursor-pointer items-center gap-2">
