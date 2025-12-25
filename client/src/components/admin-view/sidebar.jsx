@@ -26,12 +26,12 @@ const adminSidebarMenuItems =[
     
 ]
 
-function MenuItem(){
+function MenuItem({ setOpen }){
   const navigate= useNavigate();
   return(
     <nav className="mt-8 flex-col flex gap-2">
       {
-        adminSidebarMenuItems.map(MenuItem => <div key={MenuItem.id} onClick={()=>navigate(MenuItem.path)} className="flex cursor-pointer text-xl items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:text-foreground ">
+        adminSidebarMenuItems.map(MenuItem => <div key={MenuItem.id} onClick={()=>{navigate(MenuItem.path);setOpen ? setOpen(false):null }} className="flex cursor-pointer text-xl items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:text-foreground ">
           {MenuItem.icon}
           <span>{MenuItem.label}</span>
         </div>
@@ -52,15 +52,14 @@ function AdminSidebar({open,setOpen}) {
   
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetContent side="left" className="w-64">
-        <div className="flex flex-col h-full">
-          <MenuItem>
+        <div className="flex flex-col h-full">         
           <SheetHeader className='border-b'>
-            <SheetTitle>
+            <SheetTitle className="flex gap-2 mt-5 mb-5">
               <ChartNoAxesCombined  size={30}/>
-            Admin Panel
+              <h1 className="text-xl font-extrabold ">Admin Panel</h1>
             </SheetTitle>
           </SheetHeader>
-        </MenuItem>
+        <MenuItem setOpen={setOpen} /> 
         </div>          
       </SheetContent>
     </Sheet>

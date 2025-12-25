@@ -13,8 +13,7 @@ import AdminHeader from "./header";
             {/* admin slidebar*/}
                 {/* <AdminSidebar/> */}
                 <AdminSidebar open={openSidebar} setOpen={setOpenSidebar}/>
-            <div className="flex flex-1 flex-col">
-                
+            <div className="flex flex-1 flex-col">                
                 <AdminHeader setOpen={setOpenSidebar} />
                 {/* admin Header*/}
                 <main className="flex flex-1 bg-muted/40  p-4 md:p-6">
